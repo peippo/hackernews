@@ -20,15 +20,28 @@ const list = [
 	}
 ]
 
+const isSearched = searchTerm => item => item.title.toLowerCase().includes(searchTerm.toLowerCase());
+
+// ES5 syntax 
+// function isSearched(searchTerm) {
+// 	return function(item) {
+// 		return item.title.toLowerCase().includes(searchTerm.toLowerCase());
+// 	}
+// }
+
 class App extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
 			list,
+			searchTerm: '',
 		};
 
-		this.onDismiss = this.onDismiss.bind(this);
+		// Binding of the class method to the class instance is not necessary since we use ES6 arrow function syntax
+		//this.onDismiss = this.onDismiss.bind(this);
+		
+		this.onSearchChange = this.onSearchChange.bind(this);
 	}
 
 	onDismiss(id) {
@@ -37,11 +50,23 @@ class App extends Component {
 		this.setState({ list: updatedList })
 	}
 
+	onSearchChange(event) {
+		this.setState({ searchTerm: event.target.value })
+	}
+
 	render() {
 		return (
 			<div className="App">
+				<form>
+					<input
+						type="text"
+						onChange={this.onSearchChange}
+					/>
+				</form>
 				{
-					this.state.list.map(item =>
+					this.state.list
+					.filter(isSearched(this.state.searchTerm))
+					.map(item =>
 						<div key={item.objectID}>
 							<span>
 								<a href={item.url}>{item.title}</a>
