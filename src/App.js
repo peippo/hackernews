@@ -39,9 +39,7 @@ class App extends Component {
       searchTerm: ""
     };
 
-    // Binding of the class method to the class instance is not necessary since we use ES6 arrow function syntax
-    //this.onDismiss = this.onDismiss.bind(this);
-
+    this.onDismiss = this.onDismiss.bind(this);
     this.onSearchChange = this.onSearchChange.bind(this);
   }
 
