@@ -56,11 +56,13 @@ class App extends Component {
   render() {
     const { searchTerm, list } = this.state;
     return (
-      <div className="App">
-        <Search value={searchTerm} onSearchChange={this.onSearchChange}>
-          Search:
-        </Search>
-        <Table list={list} pattern={searchTerm} onDismiss={this.onDismiss} />
+      <div className="page">
+        <div className="interactions">
+          <Search value={searchTerm} onSearchChange={this.onSearchChange}>
+            Search:
+          </Search>
+          <Table list={list} pattern={searchTerm} onDismiss={this.onDismiss} />
+        </div>
       </div>
     );
   }
@@ -80,17 +82,17 @@ const Search = ({ value, onSearchChange, children }) => (
 );
 
 const Table = ({ list, pattern, onDismiss }) => (
-  <div>
+  <div className="table">
     {list.filter(isSearched(pattern)).map(item => (
-      <div key={item.objectID}>
-        <span>
+      <div key={item.objectID} className="table-row">
+        <span className="table-column-large">
           <a href={item.url}>{item.title}</a>
         </span>
-        <span>{item.author}</span>
-        <span>{item.num_comments}</span>
-        <span>{item.points}</span>
-        <span>
-          <Button onClick={() => onDismiss(item.objectID)}>Dismiss</Button>
+        <span className="table-column-mid">{item.author}</span>
+        <span className="table-column-small">{item.num_comments}</span>
+        <span className="table-column-small">{item.points}</span>
+        <span className="table-column-small">
+          <Button onClick={() => onDismiss(item.objectID)} className="button-inline">Dismiss</Button>
         </span>
       </div>
     ))}
