@@ -10,7 +10,7 @@
   margin: 20px 0;
 }
 
-.table-header {
+.table__header {
   display: flex;
   line-height: 24px;
   font-size: 16px;
@@ -18,13 +18,13 @@
   justify-content: space-between;
 }
 
-.table-empty {
+.table--empty {
   margin: 200px;
   text-align: center;
   font-size: 16px;
 }
 
-.table-row {
+.table__row {
   display: flex;
   line-height: 24px;
   white-space: nowrap;
@@ -34,31 +34,31 @@
   border: 1px solid #e3e3e3;
 }
 
-.table-header > span {
+.table__header > span {
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 0 5px;
 }
 
-.table-row > span {
+.table__row > span {
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 0 5px;
 }
 
-.table-column-large {
+.table__column--large {
   width: 40%;
 }
 
-.table-column-mid {
+.table__column--mid {
   width: 30%;
 }
 
-.table-column-small {
+.table__column--small {
   width: 10%;
 }
 
-.button-inline {
+.button--inline {
   border-width: 0;
   background: transparent;
   color: inherit;
@@ -69,7 +69,7 @@
   cursor: pointer;
 }
 
-.button-active {
+.button--active {
   border-radius: 0;
   border-bottom: 1px solid #38BB6C;
 }

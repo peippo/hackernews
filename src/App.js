@@ -84,15 +84,15 @@ const Search = ({ value, onSearchChange, children }) => (
 const Table = ({ list, pattern, onDismiss }) => (
   <div className="table">
     {list.filter(isSearched(pattern)).map(item => (
-      <div key={item.objectID} className="table-row">
-        <span className="table-column-large">
+      <div key={item.objectID} className="table__row">
+        <span className="table__column--large">
           <a href={item.url}>{item.title}</a>
         </span>
-        <span className="table-column-mid">{item.author}</span>
-        <span className="table-column-small">{item.num_comments}</span>
-        <span className="table-column-small">{item.points}</span>
-        <span className="table-column-small">
-          <Button onClick={() => onDismiss(item.objectID)} className="button-inline">Dismiss</Button>
+        <span className="table__column--mid">{item.author}</span>
+        <span className="table__column--small">{item.num_comments}</span>
+        <span className="table__column--small">{item.points}</span>
+        <span className="table__column--small">
+          <Button onClick={() => onDismiss(item.objectID)} className="button--inline">Dismiss</Button>
         </span>
       </div>
     ))}
